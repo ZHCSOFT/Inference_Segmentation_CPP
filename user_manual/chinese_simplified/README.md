@@ -131,4 +131,5 @@ cd "C:\Program Files (x86)\Intel\openvino_2021.4.752\deployment_tools\demo\"
 .\demo_security_barrier_camera
 ```
 如一切正常，会显示以下运行结果
+
 ![Detection_result](https://user-images.githubusercontent.com/79516102/163554744-2b6132cf-54ab-4791-a95a-2d4e96cdbda6.PNG)
