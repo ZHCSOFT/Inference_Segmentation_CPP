@@ -82,7 +82,6 @@ set (external_libs
 )
 
 target_link_libraries(${target_name} 
-	# PUBLIC PackageComm_headers OBAIAlgo_headers
   PUBLIC ${InferenceEngine_LIBRARIES} ${NGRAPH_LIBRARIES} ${TORCH_LIBRARIES} ${OpenCV_LIBS}
 	PUBLIC ${system_libs} ${internal_libs} ${external_libs})
 
