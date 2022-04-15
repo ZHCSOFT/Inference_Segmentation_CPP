@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 17)
 MESSAGE(STATUS "Building Measurement Algorithm Unit Test")
 
 if(UNIX)
-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -ldl")    
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -ldl")    
   SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fprofile-arcs -ftest-coverage -fPIC -O0")
 endif()
 
