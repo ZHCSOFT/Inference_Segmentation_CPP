@@ -10,6 +10,14 @@ endif()
 find_package(PkgConfig REQUIRED)
 find_package(Qt6 COMPONENTS Core Quick REQUIRED)
 
+set(CMAKE_PREFIX_PATH "/usr/local/libtorch/share/cmake/Torch")
+find_package(Torch REQUIRED)
+if(NOT Torch_FOUND)
+  message(FATAL_ERROR "Failed to find Torch")
+endif()
+include_directories(${TORCH_INCLUDE_DIRS})
+link_directories(${TORCH_LIBRARY_DIRS})
+
 set(CMAKE_MODULE_PATH "/usr/local/runtime/cmake")
 find_package(InferenceEngine REQUIRED)
 if(NOT InferenceEngine_FOUND)
@@ -27,11 +35,13 @@ project(${target_name})
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE) 
 
 SET(SOURCE    
-  src/HCNet_openvino.cpp
+  src/SegNet_openvino.cpp
+  src/SegNet_libtorch.cpp
 )
 
 SET(HEADER
-  include/IntelOpenVINO/HCNet_openvino.h
+  include/SegNet_openvino.h
+  include/SegNet_libtorch.h
 )
 
 set(CMAKE_AUTOMOC ON)
@@ -73,7 +83,7 @@ set (external_libs
 
 target_link_libraries(${target_name} 
 	# PUBLIC PackageComm_headers OBAIAlgo_headers
-  PUBLIC ${InferenceEngine_LIBRARIES} ${NGRAPH_LIBRARIES} ${OpenCV_LIBS}
+  PUBLIC ${InferenceEngine_LIBRARIES} ${NGRAPH_LIBRARIES} ${TORCH_LIBRARIES} ${OpenCV_LIBS}
 	PUBLIC ${system_libs} ${internal_libs} ${external_libs})
 
 set_target_properties(${target_name}
@@ -82,7 +92,7 @@ set_target_properties(${target_name}
 )
 
 install(TARGETS ${target_name}
-	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/UnitTest
+  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/UnitTest
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
