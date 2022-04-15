@@ -1,0 +1,2 @@
+DeeplabV3PlusSiamese DeeplabV3Plus_siamese_weighted_model.pt 513 513 3
+ONNX_DeeplabV3PlusSiamese DeeplabV3Plus_resnest_siamese_None_attention.onnx 513 513 3
