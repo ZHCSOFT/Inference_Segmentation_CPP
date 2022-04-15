@@ -1,4 +1,4 @@
-#include "SENet_libtorch.h"
+#include "SegNet_libtorch.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
