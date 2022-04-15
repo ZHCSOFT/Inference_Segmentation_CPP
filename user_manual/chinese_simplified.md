@@ -1,6 +1,3 @@
-[[_TOC_]]
-
----
 # 简介
 OpenVINO 是 Intel 推出的基于 Intel 设备 (CPU, GPU including integrated graphics, Movidius VPU, FPGA among others) 的类神经网络 **Inference** 部署工具，支持 Windows, Linux 等操作系统
 
